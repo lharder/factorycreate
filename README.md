@@ -8,7 +8,7 @@ To the standard funtion, you can pass in properties, but only those of a few giv
 
 ## Standard Defold way
 
-```
+```lua
 -- standard Defold way to create an object:
 local props = {}
 props.foo = 1
@@ -35,7 +35,7 @@ https://github.com/lharder/events/archive/refs/heads/main.zip
 ## Any parameters on initialization
 Instead of factory.create, you would write:
 
-```
+```lua
 -- use factorycreate() instead of factory.create()
 require( "factorycreate.factorycreate" )
 
@@ -55,7 +55,7 @@ local id = factorycreate( factoryurl, pos, rot, props, scale )
 
 To receive the initialization parameters, the newly created gameobject must trigger the FACTORY_CREATED event provided by the library in its init() method. In the trigger callback method, you receive the parameters and can use them in any way you see fit:
 
-```
+```lua
 -- inside the gameobject script:
 local Events = require( "events.events" )
 
