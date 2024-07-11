@@ -57,14 +57,12 @@ To receive the initialization parameters, the newly created gameobject must trig
 
 ```
 -- inside the gameobject script:
--- load the Events library
 local Events = require( "events.events" )
 
 function init( self )
 	-- trigger the FACTORY_CREATED event and provide a callback
 	-- method. The parameters get passed in as a variable:
 	Events.FACTORY_CREATED:trigger( self, function( self, params ) 
-		-- 'params' may contain any data you need
 		self.attrs = params
 		pprint( params ) 
 	end )
