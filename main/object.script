@@ -1,0 +1,29 @@
+local Events = require( "events.events" )
+
+
+local function serialize( t ) 
+	local s = ""
+	for key, value in pairs( t ) do 
+		s = s .. ( "%s = %s\n" ):format( key, tostring( value ) )
+	end
+	return s
+end
+
+
+function init( self )
+	Events.FACTORY_CREATED:trigger( self, function( self, params ) 
+		self.attrs 		= params
+		self.counter 	= 0
+
+		self.attrs[ "id" ] = go.get_id()
+		label.set_text( "#caption", serialize( self.attrs ) )
+	end )
+end
+
+
+function update( self, dt )
+	self.counter = self.counter + dt 
+	if self.counter > 3 then go.delete() end
+	
+	label.set_text( "#countdown", tostring( math.ceil( 3 - self.counter ) ) )
+end
