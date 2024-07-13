@@ -1,4 +1,6 @@
-local Events = require( "main.events" )
+local Events = require( "events.events" )
+
+Events.FACTORY_CREATED = Events.create( "factorycreated" )
 
 
 local function exec( ctx, fn, params )
