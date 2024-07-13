@@ -1,6 +1,4 @@
-local Events = require( "events.events" )
-
-Events.FACTORY_CREATED = Events.create( "factorycreated" )
+local Events = require( "main.events" )
 
 
 local function exec( ctx, fn, params )
@@ -14,13 +12,14 @@ end
 
 
 -- GLOBAL ------------------------------------
-function factorycreate( facturl, pos, attrs )
+function factorycreate( facturl, pos, rot, attrs, scale )
 	local evHandler = Events.FACTORY_CREATED:subscribe( function( newObjCtx, fnInit ) 
 		if newObjCtx == nil then return end  
 		exec( newObjCtx, fnInit, attrs )
 	end )
 
-	local id = factory.create( facturl, pos )
+	local id = factory.create( facturl, pos, rot, nil, scale )
+
 	Events.FACTORY_CREATED:unsubscribe( evHandler )
 
 	return id
