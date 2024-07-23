@@ -13,8 +13,7 @@ local function exec( ctx, fn, params )
 end
 
 
--- GLOBAL ------------------------------------
-function factorycreate( facturl, pos, rot, attrs, scale )
+local function factorycreate( facturl, pos, rot, attrs, scale )
 	local evHandler = Events.FACTORY_CREATED:subscribe( function( newObjCtx, fnInit ) 
 		if newObjCtx == nil then return end  
 		exec( newObjCtx, fnInit, attrs )
@@ -26,3 +25,7 @@ function factorycreate( facturl, pos, rot, attrs, scale )
 
 	return id
 end
+
+
+return factorycreate
+
