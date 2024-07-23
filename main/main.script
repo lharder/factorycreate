@@ -1,4 +1,4 @@
-require( "factorycreate.factorycreate" )
+local factorycreate = require( "factorycreate.factorycreate" )
 
 
 -- methods ------------------------
@@ -11,7 +11,7 @@ end
 function on_input( self, action_id, action )
 	if action_id == hash( "touch" ) and action.pressed then
 		local pos = vmath.vector3( action.x, action.y, .5 )
-		factorycreate( "/test#objectfactory", pos, { foo = "Hello World...!" } )
+		factorycreate( "/test#objectfactory", pos, nil, { foo = "Hello World...!" } )
 	end
 end
 
